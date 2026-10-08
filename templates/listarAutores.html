@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='container mt-3">
+    <h3>Listado de autores</h3>
+    <div class="justify-content-center text-center mt-3">
+        <table class="table table-dark table-striped">
+                    <thead>
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Descripcion</th>
+                        <th>Autor</th>
+                       <th>Acciones</> 
+                    </tr>
+                </thead>
+                    <tbody>
+                    {% for autor in autores %}
+                    <tr>
+                        <td>{{autor.nombre}}</td>
+                        <td>{{autor.lugar_nacimiento}}</td>
+                        <td>{{autor.fecha_nacimiento}}</td>
+                        <td>
+                            
+                    <a href="{% url 'editarAutor' autor.pk %}" class="btn btn-warning">Actualizar</a>
+                    <a href="{% url 'eliminarAutor' autor.pk %}" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody
+            </table>

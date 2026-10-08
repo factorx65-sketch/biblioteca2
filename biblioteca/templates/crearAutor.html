@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class='container mt-5'>
+    <div class ='offset-1 ccpntainer mx-5'>
+    <form method='POST' action="{% url 'crearAutor' %}">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input
+                type="text"
+                class="form-control"
+                name="nombre"
+                id="nombre"
+                placeholder="Nombre"
+                required/>
+            </div>
+
+        <div class="mb-3">
+            <label for="lugar" class="form-label">Lugar de nacimiento</label>
+            <input
+                type="text"
+                class="form-control"
+                name="lugar"
+                id="lugar"
+                placeholder="Lugar de nacimiento"
+                required/>
+            </div>
+        
+        <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha de nacimiento</label>
+            <input
+                type="datetime-local"
+                class="form-control"
+                name="fecha"
+                id="fecha"
+                required/>
+            </div>  
+
+            <input type='submit' class='btn btn-success' value='Enviar'/>
+
+        {% csrf_token %}
+
+    
+{% endblock content %}

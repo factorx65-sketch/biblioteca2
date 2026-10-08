@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-3">
+    <h1>Editar Autor</h1>
+    <div class="container mt-2">
+        <form method="POST" action="{% url 'editarAutor' autor.id %}">
+            {% csrf_token %}
+            <div class="mt-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="nombre"
+                    id="nombre"
+                    value="{{ autor.nombre }}"
+                    required/>
+            </div>
+            <div class="mt-3">
+                <label for="lugar" class="form-label">Lugar de nacimiento</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="lugar"
+                    id="lugar"
+                    value="{{ autor.lugar_nacimiento }}"
+                    required/>
+            </div>
+            <div class="mt-3">
+                <label for="fecha" class="form-label">Fecha de nacimiento</label>
+                <input
+                    type="datetime-local"
+                    class="form-control"
+                    name="fecha"
+                    id="fecha"
+                    value="{{ autor.fecha_nacimiento|date:'Y-m-d\TH:i' }}"
+                    required/>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Actualizar"/>
+        </form>
+        <form method='POST' action='{% url "eliminarAutor" autor.id %}'>
+            {% csrf_token %}
+            <input type='submit' class='btn btn-danger' value='Eliminar'/>
+        </form>
+    </div>
+</div>  
+
+{% endblock content %}
